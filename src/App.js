@@ -1,8 +1,8 @@
-
+import MainScreen from "./pages/MainScreen/MainScreen";
 
 function App() {
   return (
-    <h1>Hello world!</h1>
+    <MainScreen></MainScreen>
   );
 }
 
