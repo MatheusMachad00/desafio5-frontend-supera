@@ -3,7 +3,6 @@ import { InputStyle } from "./DateSearchBarStyle";
 
 export default function DateSearchBar({ prop }) {
   const [date, setdate] = useState("");
-  /* console.log(date); */
   return (
     <InputStyle>
       <h1>Data de {prop}</h1>

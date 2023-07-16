@@ -34,3 +34,9 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
 `
+
+export const TableComponent = styled.main`
+  display: flex;
+  justify-content: center;
+padding-top: 100px;
+`

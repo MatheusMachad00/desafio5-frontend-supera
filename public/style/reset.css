@@ -25,7 +25,9 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
   line-height: 1;
-  background-color: #ffffff;
+  background-image: linear-gradient(silver, white);
+  background-repeat: no-repeat;
+  height: 100vh;
 }
 ol, ul {
   list-style: none;
