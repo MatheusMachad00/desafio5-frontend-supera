@@ -1,9 +1,6 @@
-import { useState } from "react";
 import { InputStyle } from "./NameSearchBarStyle";
 
-export default function NameSearchBar() {
-  const [name, setName] = useState("");
-
+export default function NameSearchBar({ setName }) {
   return (
     <InputStyle>
       <h1>Nome do operador transacionado</h1>

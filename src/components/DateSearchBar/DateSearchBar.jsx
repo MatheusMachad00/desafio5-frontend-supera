@@ -1,12 +1,27 @@
-import { useState } from "react";
 import { InputStyle } from "./DateSearchBarStyle";
 
-export default function DateSearchBar({ prop }) {
-  const [date, setdate] = useState("");
+export default function DateSearchBar({ prop, setStartDate, setEndDate }) {
   return (
-    <InputStyle>
-      <h1>Data de {prop}</h1>
-      <input type="date" onChange={(e) => setdate(e.target.value)}></input>
-    </InputStyle>
+    <>
+      {prop === "início" && (
+        <InputStyle>
+          <h1>Data de {prop}</h1>
+          <input
+            type="date"
+            onChange={(e) => setStartDate(e.target.value)}
+          ></input>
+        </InputStyle>
+      )}
+
+      {prop === "fim" && (
+        <InputStyle>
+          <h1>Data de {prop}</h1>
+          <input
+            type="date"
+            onChange={(e) => setEndDate(e.target.value)}
+          ></input>
+        </InputStyle>
+      )}
+    </>
   );
 }

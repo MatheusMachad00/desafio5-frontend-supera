@@ -1,11 +1,12 @@
 import { Header, TableStyle } from "./BankStatementStyle";
+import convertDate from "../../utils/convertDate";
 
-export default function BankStatement({ data }) {
+export default function BankStatement({ data, balance }) {
   return (
     <main>
       <Header>
-        <h1>Saldo total: R$ 50,00</h1>
-        <h1>Saldo no período: R$ 50,00</h1>
+        <h1>Saldo total: R$ {balance.toFixed(2)}</h1>
+        <h1>Saldo no período: R$ {balance.toFixed(2)}</h1>
       </Header>
 
       <TableStyle>
@@ -20,10 +21,10 @@ export default function BankStatement({ data }) {
         <tbody>
           {data.map((item, index) => (
             <tr key={index}>
-              <td>{item.dados}</td>
-              <td>R$ {item.valencia}</td>
-              <td>{item.tipo}</td>
-              <td>{item.nomeOperador}</td>
+              <td>{convertDate(item.date)}</td>
+              <td>R$ {item.value}</td>
+              <td>{item.operationType}</td>
+              <td>{item.operatorName}</td>
             </tr>
           ))}
         </tbody>
