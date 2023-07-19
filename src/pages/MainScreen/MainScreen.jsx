@@ -36,18 +36,28 @@ export default function MainScreen() {
     });
   }, []);
 
-  function searchBy (){
-    if(startDate && endDate !== ""){
+  function searchBy() {
+    if (startDate && endDate !== "") {
       const LINK_API = `http://localhost:8080/transaction/findByDate/${startDate}/${endDate}`;
-    const request = axios.get(LINK_API);
-    request.then((response) => {
-      const { data } = response;
-      setTransactionData(data);
-    });
-    request.catch((err) => {
-      console.log(err.response);
-    });
-    } else console.log("olá")
+      const request = axios.get(LINK_API);
+      request.then((response) => {
+        const { data } = response;
+        setTransactionData(data);
+      });
+      request.catch((err) => {
+        console.log(err.response);
+      });
+    } else if (username !== "") {
+      const LINK_API = `http://localhost:8080/transaction/findByName/${username}`;
+      const request = axios.get(LINK_API);
+      request.then((response) => {
+        const { data } = response;
+        setTransactionData(data);
+      });
+      request.catch((err) => {
+        console.log(err.response);
+      });
+    }
   }
 
   return (
