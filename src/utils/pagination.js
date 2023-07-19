@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import BankStatement from "../components/BankStatement/BankStatement";
 import joinTables from "./joinTables";
 
-export default function Pagination({ data, itemsPerPage, transactionData, userData, activeUser }) {
+export default function Pagination({ itemsPerPage, transactionData, userData, activeUser }) {
   const [currentPage, setCurrentPage] = useState(1);
   const apidata = joinTables(userData, transactionData);
   const totalPages = Math.ceil(apidata[activeUser].transactions.length / itemsPerPage); 
@@ -14,9 +14,9 @@ export default function Pagination({ data, itemsPerPage, transactionData, userDa
     setCurrentPage(pageNumber);
   };
 
-  return (
+  return ( 
     <div>
-      <BankStatement data={currentItems} balance={apidata[activeUser].balance}/> 
+      <BankStatement data={currentItems} balance={apidata[activeUser].balance} /> 
       <div>
         {Array.from({ length: totalPages }, (_, index) => (
           <button

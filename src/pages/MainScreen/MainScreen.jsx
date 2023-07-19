@@ -9,7 +9,7 @@ import axios from "axios";
 export default function MainScreen() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [transactionData, setTransactionData] = useState(null);
   const [userData, setUserData] = useState(null);
   const [activeUser, setActiveUser] = useState(0);
@@ -36,6 +36,20 @@ export default function MainScreen() {
     });
   }, []);
 
+  function searchBy (){
+    if(startDate && endDate !== ""){
+      const LINK_API = `http://localhost:8080/transaction/findByDate/${startDate}/${endDate}`;
+    const request = axios.get(LINK_API);
+    request.then((response) => {
+      const { data } = response;
+      setTransactionData(data);
+    });
+    request.catch((err) => {
+      console.log(err.response);
+    });
+    } else console.log("olá")
+  }
+
   return (
     <Main>
       {userData === null && <h1>carregando....</h1>}
@@ -58,16 +72,10 @@ export default function MainScreen() {
           setStartDate={setStartDate}
           setEndDate={setEndDate}
         ></DateSearchBar>
-        <NameSearchBar setName={setName}></NameSearchBar>
+        <NameSearchBar setUsername={setUsername}></NameSearchBar>
       </Top>
       <SearchButton>
-        <button
-          onClick={() => {
-            console.log("teste");
-          }}
-        >
-          Pesquisar
-        </button>
+        <button onClick={() => {searchBy()}}>Pesquisar</button> 
       </SearchButton>
       <TableComponent>
         {transactionData && userData === null && <h1>carregando....</h1>}
